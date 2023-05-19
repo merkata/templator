@@ -1,0 +1,32 @@
+template_files = [
+  ".gitignore",
+  ".jujuignore",
+  "charmcraft.yaml",
+  "CODEOWNERS",
+  "config.yaml",
+  "CONTRIBUTING.md",
+  "LICENSE",
+  "metadata.yaml",
+  "pyproject.toml",
+  "README.md",
+  "requirements.txt",
+  "tox.ini",
+  "trivy.yaml",
+  "zap_rules.tsv",
+  "src/charm.py",
+  "tests/unit/test_charm.py",
+  "tests/integration/test_charm.py",
+  ".github/ISSUE_TEMPLATE/bug_report.yml",
+  ".github/ISSUE_TEMPLATE/enhancement_proposal.yml",
+  ".github/workflows/auto_update_libs.yaml",
+  ".github/workflows/comment.yaml",
+  ".github/workflows/integration_test_with_secrets.yaml",
+  ".github/workflows/integration_test.yaml",
+  ".github/workflows/issues.yaml",
+  ".github/workflows/load_test.yaml",
+  ".github/workflows/promote_charm.yaml",
+  ".github/workflows/test_and_publish_charm.yaml",
+  ".github/workflows/test.yaml"
+]
+
+repo_name = "template-repo-test"
