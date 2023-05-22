@@ -1,6 +1,6 @@
 repo_names = [
-  "template-repo-1",
-  "template-repo-2"
+  "template-repo-3",
+  "template-repo-4",
 ]
 
 template_repo_name = "template-repo-test"
