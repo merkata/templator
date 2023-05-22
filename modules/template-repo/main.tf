@@ -16,6 +16,7 @@ resource "github_repository" "template" {
   auto_init = true
 
   is_template = true
+  has_issues  = true
 }
 
 resource "github_branch_protection" "template-protect" {
