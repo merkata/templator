@@ -10,7 +10,7 @@ terraform {
 resource "github_repository" "templated" {
   for_each    = toset(var.repo_names)
   name        = each.value
-  description = "A terraform repo from template test"
+  description = format("%s - charm repository.", each.value)
 
   visibility = "public"
 
