@@ -29,4 +29,4 @@ template_files = [
   ".github/workflows/test.yaml"
 ]
 
-repo_name = "template-repo-test"
+repo_name = "is-charms-template-repo"
