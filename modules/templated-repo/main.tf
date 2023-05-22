@@ -17,9 +17,9 @@ resource "github_repository" "templated" {
   has_issues = true
 
   template {
+    include_all_branches = true
     owner                = var.template_repo_owner
     repository           = var.template_repo_name
-    include_all_branches = true
   }
 }
 
