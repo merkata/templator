@@ -9,7 +9,7 @@ terraform {
 
 resource "github_repository" "template" {
   name        = var.repo_name
-  description = "A terraform repo template test"
+  description = format("%s - a terraform managed template repo", var.repo_name)
 
   visibility = "public"
 
