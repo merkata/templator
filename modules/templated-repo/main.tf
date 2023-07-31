@@ -14,7 +14,14 @@ resource "github_repository" "templated" {
 
   visibility = "public"
 
-  has_issues = true
+  allow_merge_commit     = false
+  allow_rebase_merge     = false
+  delete_branch_on_merge = true
+
+  has_issues    = true
+  has_downloads = true
+  has_projects  = true
+  has_wiki      = true
 
   template {
     include_all_branches = true
@@ -23,7 +30,7 @@ resource "github_repository" "templated" {
   }
 }
 
-resource "github_branch_protection" "templated-protect" {
+resource "github_branch_protection" "templated-protect-main" {
   for_each      = toset(var.repo_names)
   repository_id = each.value
   # also accepts repository name
@@ -31,11 +38,17 @@ resource "github_branch_protection" "templated-protect" {
 
   pattern = "main"
 
-  require_signed_commits = true
+  enforce_admins = true
 
+  require_signed_commits          = true
   require_conversation_resolution = true
+  required_linear_history         = true
 
   required_status_checks {
+    contexts = [
+      "integration-tests / Required Integration Test Status Checks",
+      "unit-tests / Required Test Status Checks",
+    ]
     strict = true
   }
 
@@ -43,5 +56,22 @@ resource "github_branch_protection" "templated-protect" {
     dismiss_stale_reviews           = true
     require_code_owner_reviews      = true
     required_approving_review_count = 2
+    restrict_dismissals             = false
   }
+}
+
+resource "github_branch_protection" "templated-protect-catchall" {
+  for_each      = toset(var.repo_names)
+  repository_id = each.value
+  # also accepts repository name
+  # repository_id  = github_repository.example.name
+
+  pattern = "**/**"
+
+  allows_deletions = true
+
+  require_signed_commits = true
+
+  require_conversation_resolution = false
+
 }

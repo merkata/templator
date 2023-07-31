@@ -10,7 +10,7 @@ terraform {
 provider "github" {}
 
 module "template-repo" {
-  source         = "../../modules/template-repo"
+  source         = "../../modules/template-charm-repo"
   repo_name      = var.repo_name
   template_files = var.template_files
 }

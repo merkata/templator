@@ -11,10 +11,10 @@ Create a personal access token on GitHub
 - export GITHUB_OWNER # set to your account name
 
 ```shell
-cd envs/template-repo
+cd environments/template-charm-repo
 # adjust terraform.tfvars
 terraform init && terraform plan && terraform apply
-cd envs/templated-repos
+cd environments/templated-repos
 # adjust terraform.tfvars
 terraform init && terraform plan && terraform apply
 ```
