@@ -18,3 +18,40 @@ cd environments/templated-repos
 # adjust terraform.tfvars
 terraform init && terraform plan && terraform apply
 ```
+
+### Adding an existing repo
+
+Adding an existing repo means adding the configuration in the `terraform.tfvars` under the environments repo directory
+that hosts your environmnents and then importing the resources in the state, so that they can be refreshed subsequently.
+
+```text
+repo_names = [
+  "repo",
+]
+
+template_repo_enabled = {
+  "repo" : false
+}
+```
+
+```shell
+terraform import 'module.templated-repos.github_repository.templated["repo"]' repo
+terraform import 'module.templated-repos.github_branch_protection.templated-protect-main["repo"]' repo:main
+terraform import 'module.templated-repos.github_branch_protection.templated-protect-catchall["repo"]' repo:**/**
+terraform plan && terraform apply
+```
+
+### Creating a new repo
+
+If you want to create a new repo, you need to populate `terraform.tfvars` only in the environmnents repo directory that
+hosts your environments.
+
+```text
+repo_names = [
+  "repo",
+]
+
+template_repo_enabled = {
+  "repo" : false
+}
+```
