@@ -8,8 +8,9 @@ terraform {
 }
 
 module "templated-repos" {
-  source              = "../../modules/templated-repo"
-  repo_names          = var.repo_names
-  template_repo_owner = var.template_repo_owner
-  template_repo_name  = var.template_repo_name
+  source                = "../../modules/templated-repo"
+  repo_names            = var.repo_names
+  template_repo_enabled = var.template_repo_enabled
+  template_repo_owner   = var.template_repo_owner
+  template_repo_name    = var.template_repo_name
 }

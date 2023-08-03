@@ -23,10 +23,13 @@ resource "github_repository" "templated" {
   has_projects  = true
   has_wiki      = true
 
-  template {
-    include_all_branches = true
-    owner                = var.template_repo_owner
-    repository           = var.template_repo_name
+  dynamic "template" {
+    for_each = var.template_repo_enabled[each.value] == true ? toset([1]) : toset([])
+    content {
+      include_all_branches = true
+      owner                = var.template_repo_owner
+      repository           = var.template_repo_name
+    }
   }
 }
 

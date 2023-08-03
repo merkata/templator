@@ -3,6 +3,11 @@ variable "repo_names" {
   type        = set(string)
 }
 
+variable "template_repo_enabled" {
+  description = "Whether to use a template repository when creating a repo."
+  type        = map(any)
+}
+
 variable "template_repo_name" {
   description = "Repo name of the template repository."
   type        = string
